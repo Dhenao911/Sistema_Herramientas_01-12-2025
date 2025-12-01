@@ -9,13 +9,16 @@ namespace SH.Backend.DAL
         {
         }
 
-        private DbSet<Employee> Employees { get; set; }
-        private DbSet<Tool> Tools { get; set; }
-        private DbSet<Loan> Loans { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Tool> Tools { get; set; }
+        public DbSet<Loan> Loans { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Tool>().HasIndex(t => t.Category).IsUnique();
+
         }
     }
 }
