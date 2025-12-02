@@ -2,7 +2,7 @@
 
 namespace SH.Share.SHMappers
 {
-    internal class Mappers : Profile
+    public class Mappers : Profile
     {
     }
 }
