@@ -19,7 +19,7 @@ namespace SH.Backend.Repositories.Implementaciones
             employee.CreatedDate = DateTime.UtcNow;
             var employeeCreate = await _context.Employees.AddAsync(employee);
 
-            return await _context.SaveChangesAsync() >= 0 ? true : false;
+            return await SaveAsync();
         }
 
         public async Task<bool> DeleteEmployeeAsync(int id)
@@ -33,7 +33,7 @@ namespace SH.Backend.Repositories.Implementaciones
 
             _context.Employees.Remove(employeeExist);
 
-            return await _context.SaveChangesAsync() >= 0 ? true : false;
+            return await SaveAsync();
         }
 
         public async Task<bool> EmployeeExisteByNameAsync(string name)
@@ -54,6 +54,7 @@ namespace SH.Backend.Repositories.Implementaciones
         {
             return await _context.Employees
                 .AsNoTracking()
+                .OrderBy(e=>e.Name)
                 .ToListAsync();
         }
 
@@ -61,6 +62,7 @@ namespace SH.Backend.Repositories.Implementaciones
         {
             return await _context.Employees
                 .AsNoTracking()
+                .Include(e=>e.Loands)
                 .FirstOrDefaultAsync(e => e.id == id);
         }
 
@@ -70,7 +72,9 @@ namespace SH.Backend.Repositories.Implementaciones
 
             _context.Employees.Update(employee);
 
-            return await _context.SaveChangesAsync() >= 0 ? true : false;
+            return await SaveAsync();
         }
+
+        private async Task<bool> SaveAsync() => await _context.SaveChangesAsync() > 0 ? true : false;
     }
 }

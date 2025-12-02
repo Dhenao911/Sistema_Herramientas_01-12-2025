@@ -17,11 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Services\Implementaciones\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SH.Share\SH.Share.csproj" />
   </ItemGroup>
 

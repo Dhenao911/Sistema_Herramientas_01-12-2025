@@ -12,7 +12,7 @@ using SH.Backend.DAL;
 namespace SH.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20251201183428_InitialDb")]
+    [Migration("20251202050021_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -28,10 +28,7 @@ namespace SH.Backend.Migrations
             modelBuilder.Entity("SH.Share.Models.Employee", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("Cargo")
                         .IsRequired()
@@ -67,10 +64,7 @@ namespace SH.Backend.Migrations
             modelBuilder.Entity("SH.Share.Models.Loan", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -96,10 +90,7 @@ namespace SH.Backend.Migrations
             modelBuilder.Entity("SH.Share.Models.Tool", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("Category")
                         .IsRequired()
